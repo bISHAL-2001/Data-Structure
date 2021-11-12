@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-int top = -1;
-int size = 0;
+int top = -1, size = 0;
 int* arr;
 char *condition = " ";
 void push ()
