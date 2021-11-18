@@ -7,7 +7,7 @@ struct Stack
 {
     int top;
     unsigned capacity;
-    int* array;
+    char* array;
 };
 
 struct Stack* createStack(unsigned capacity)
@@ -15,7 +15,7 @@ struct Stack* createStack(unsigned capacity)
     struct Stack* stack = (struct Stack*)malloc(sizeof(struct Stack));
     stack -> capacity = capacity;
     stack -> top = -1;
-    stack -> array = (int*)malloc(stack -> capacity * sizeof(int));
+    stack -> array = (char*)malloc(stack -> capacity * sizeof(char));
     return stack;
 }
 bool isFull(struct Stack*stack)
@@ -54,7 +54,7 @@ char pop(struct Stack* stack)
 int main(void)
 {
 
-    struct Stack* stack;
+    struct Stack* stack = NULL;
 
     char *s;
     s = (char*) malloc(sizeof(char)*100);
@@ -77,10 +77,11 @@ int main(void)
         i++;
     }
     stack = createStack(len);
-    char *ns;
-    ns = (char*) malloc(sizeof(char)*(len));
-
     int nSize = len-i;
+
+    char *ns;
+    ns = (char*) calloc(sizeof(char), (nSize));
+
     for(; i<len; i++)
     {
         push(stack, s[i]);
@@ -91,8 +92,10 @@ int main(void)
         ns[i] = pop(stack);
     }
 
-    printf("The Original string:\n\"%s\n", s);
+    printf("%d %d\n", len, nSize);
+    printf("The Original string:\n\"%s\"\n", s);
     printf("The Reversed string:\n\"%s\"\n", ns);
+    free(stack);
     free(ns);
     free(s);
 }
