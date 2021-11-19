@@ -65,7 +65,6 @@ void append(struct Node** head_ref, int new_data)
 
     last -> link = new_node;
 
-    return;
 }
 
 // Displaying the list.
@@ -80,7 +79,6 @@ void show(struct Node* node)
         }
         printf("\n");
     }
-    return;
 }
 
 int main()
