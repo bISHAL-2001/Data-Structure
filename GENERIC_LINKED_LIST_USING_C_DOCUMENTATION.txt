@@ -1,0 +1,6 @@
+Unlike C++ and Java, C doesn't support generics.
+How to create a linked list in C that can be used for any data type?
+In C, we can use a void pointer and a function pointer to implement the same functionality.
+The great thing about void pointer is it can be used to point to any data type.
+Also, the size of all types of pointers is always the same, so we can always allocate a linked list node.
+Function pointer is needed to process actual content stored at the address pointed by the void pointer.

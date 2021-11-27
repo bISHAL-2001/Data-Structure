@@ -1,0 +1,13 @@
+add_executable(Stacks_Using_Arrays Stacks_Using_Arrays.c)
+add_executable(Stack_Using_Array_Using_Struct Stack_Using_Array_Using_Struct.c)
+add_executable(Reverse_using_stack Reverse_string_using_stack.c)
+add_executable(Queues_Using_Array Queues_Using_Array.c)
+
+add_executable(Linked_List_primary Linked_List_primary.c)
+add_executable(Linked_List_operations_on_node Linked_List_operations_on_node.c)
+
+
+
+add_executable(Polynomial_Operation Polynomial_Operation.c)
+add_executable(test test.c)
+add_executable(test1 test1.c)
