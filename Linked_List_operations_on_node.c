@@ -20,7 +20,6 @@ void show(struct Node* node)
             node = node->link;
         }
     }
-    return;
 }
 
 void push(struct Node** head_ref, int new_data)
@@ -63,7 +62,6 @@ void append(struct Node** head_ref, int new_data)
     last -> link = new_node;
 
     printf("[+] Successfully Added\n");
-    return;
 }
 void add_after_head(struct Node** head_ref, struct Node* head, int data)
 {
@@ -101,7 +99,6 @@ void add_after_required(struct Node* node, int data, int user_data)
     }
     if(c==0)
         printf("[-] Operation unsuccessful!\n");
-    return;
 }
 
 void pop(struct Node** head)
