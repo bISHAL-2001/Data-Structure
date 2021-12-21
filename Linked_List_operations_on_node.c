@@ -111,7 +111,6 @@ void pop(struct Node** head)
         printf("Data popped: %d\n", (*head)->data);
         *head = (*head) -> link;
     }
-    return;
 }
 
 void deleteAlt(struct Node *head)
