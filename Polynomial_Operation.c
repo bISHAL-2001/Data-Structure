@@ -17,7 +17,6 @@ void append(struct Node** head_ref, int coefficient, int exponent)
     new_node -> co = coefficient;
     new_node -> ex = exponent;
     /*The address section of the new_node is set to null*/
-    new_node -> link = NULL;
     /*If the list is empty, th new_node is declared as the new_node*/
     if(*head_ref == NULL)
     {
@@ -66,10 +65,10 @@ void add_terms(struct Node *head1,struct Node* head2, struct Node **new_head)
                 head1 = head1->link;
                 head2 = head2->link;
             }
-            else if(head1 -> ex > head2 -> ex && head1 -> link == head2-> link == NULL)
-            {
-
-            }
+//            else if(head1 -> ex > head2 -> ex && head1 -> link == head2-> link == NULL)
+//            {
+//
+//            }
         }
     }
 }
@@ -129,83 +128,62 @@ int main(void)
 {
     struct Node *list1 = NULL, *list2 = NULL, *final_list = NULL;
 
-    char *s;
-    s = (char*)malloc(sizeof(char)*100);
+//    char *s, *s1;
+//    s = (char*)malloc(sizeof(char)*100);
+//    s1 = (char*)malloc(sizeof(char)*100);
+//
+//
+//    scanf("%s", s);
+//    scanf("%s", s1);
+//    int sl1 = strlen(s);
+//    int sl2 = strlen(s);
+//    int  k =0;
+//
+//
+//    for(int i = 0; i<sl1; i++)
+//    {
+//        char *temp;
+//        temp = (char*) malloc(sizeof(char)*10);
+//        if(s[i] >= '0' && s[i] <= '9')
+//        {
+//            temp[k++] = s[i];
+//        }
+//        else if(s[i] == 'y')
+//        {
+//            k = 0;
+//            printf("%s", temp);
+//        }
+//    }
+    char s[] = "12y4-3y3+2y2+6";
+    int ls1 = strlen(s);
 
-    scanf("%s", s);
-    int j, k = 0;
-    char *n;
-    n = (char*)malloc(sizeof(char)*5);
-
-
-    /* List 1*/
-    for(int i = 0; i < strlen(s); i++)
+    char *n = (char*) malloc(sizeof (char)*(ls1+1));
+    for(int i=0; i<ls1; i++)
     {
-        if((s[i]) >='0' && (s[i]) <= '9')
+        int j = 0;
+        int val;
+        while(s[i]>= '1' && s[i] <= '9')
         {
-            n[k] = s[i];
-            k++;
+            n[j++]= s[i++];
         }
-        else if(s[i] == 'y')
+        if(s[i] == 'y')
         {
-            int val1, val;
-            val1 = strtof(n, &n);
-            k = 0;
-            i += 1;
+            val = (int) (strtof(n, &n));
+            int val1 = 0;
+            char *temp = (char*) malloc((100));
             j = 0;
-            char *n1;
-            n1 = (char*)malloc(sizeof(char)*5);
-            while(s[i] >='0' && s[i]<='9')
+            i+=1;
+            while(s[i]>= '1' && s[i] <= '9')
             {
-                n1[j] = s[i];
-                j++;
-                i++;
+                temp[j++] = s[i++];
             }
-            val = strtof(n1, &n1);
-            append(&list1, val1, val);
+            val1 = (int)(strtof(temp, &temp));
+            if(val!=0 && val1 != 0)
+                printf("%d %d\n", val, val1);
+            else if(val != 0 )
+                printf("%d 1\n", val);
         }
-
-
     }
+    printf("%s", n);
 
-    scanf("%s", s);
-    /* List 2*/
-    for(int i = 0; i < strlen(s); i++)
-    {
-        if((s[i]) >='0' && (s[i]) <= '9')
-        {
-            n[k] = s[i];
-            k++;
-        }
-        else if(s[i] == 'y')
-        {
-            int val1, val;
-            val1 = strtof(n, &n);
-            k = 0;
-            i += 1;
-            j = 0;
-            char *n1;
-            n1 = (char*)malloc(sizeof(char)*5);
-            while(s[i] >='0' && s[i]<='9')
-            {
-                n1[j] = s[i];
-                j++;
-                i++;
-            }
-            val = strtof(n1, &n1);
-            append(&list2, val1, val);
-
-        }
-
-    }
-
-
-    show(list1);
-    show(list2);
-
-    add_terms(list1, list2, &final_list);
-
-    show(final_list);
-    free(s);
-    return 0;
 }
