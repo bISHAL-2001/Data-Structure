@@ -1,5 +1,6 @@
 add_executable(Stacks_Using_Arrays Stacks_Using_Arrays.c)
 add_executable(Stack_Using_Array_Using_Struct Stack_Using_Array_Using_Struct.c)
+add_executable(2_stacks_using_array_dividing_in_2_halves 2_stacks_using_array_dividing_in_2_halves.c)
 add_executable(Reverse_using_stack Reverse_string_using_stack.c)
 add_executable(Queues_Using_Array Queues_Using_Array.c)
 
