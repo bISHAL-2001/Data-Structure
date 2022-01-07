@@ -111,7 +111,7 @@ int main(void)
         else
             printf("\n[-] Sorry operation unsuccessful!\n");
 
-        if(counter >= 100)
+        if(counter >= 50)
             break;
 
         printf("\nWanna stop? type 'Y' else type 'N'  ---->");
