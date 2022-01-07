@@ -11,5 +11,8 @@ add_executable(Linked_List_operations_on_node Linked_List_operations_on_node.c)
 
 
 add_executable(Polynomial_Operation Polynomial_Operation.c)
+
+add_executable(Alice's_Library Alice's_Library.c)
+
 add_executable(test test.c)
 add_executable(test1 test1.c)
