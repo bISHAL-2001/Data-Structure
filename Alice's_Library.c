@@ -2,84 +2,65 @@
 #include <stdlib.h>
 #include <string.h>
 
-struct Node{
-    char data;
-    struct Node* link;
-};
-
-void push(char ch, char *s, int *pointer)
+void push(char *per, char input, int *pointer1)
 {
-
+    (*pointer1) ++;
+    per[(*pointer1)] = input;
 }
-void pop(char *s, int *pointer)
+void del(char *tmp, char *per, int *pointer, int *pointer1)
 {
-
-}
-void LastNodeDeletion(struct Node *head, struct Node** head_ref, struct Node* p)
-{
-    struct Node *toDelLast, *preNode = NULL;
-    if(head == NULL)
-    {/*show(head);*/}
-    else if(head->link == NULL)
+    if(*pointer != -1)
     {
-        struct Node* new_head = NULL;
-        push(head->data, )
-        *head_ref = new_head;
-
-    }
-    else
-    {
-        toDelLast = head;
-        preNode = head;
-        /* Traverse to the last node of the list*/
-        while(toDelLast->link != NULL)
+        int i = 0;
+        while(*pointer != -1)
         {
-            preNode = toDelLast;
-            toDelLast = toDelLast->link;
+            push(per, tmp[i], pointer1);
+            tmp[i++] = ' ';
+            (*pointer)--;
         }
-        if(toDelLast == head)
-        {
-            head = NULL;
-        }
-        else
-            /* Disconnects the link of second last node with last node */
-            preNode->link = NULL;
-
     }
 }
-
-void reverse(char *s)
+void pop(char *tmp, char *per, int *pointer, int *pointer1)
 {
-
-    for(int i=strlen(s)-1; i>=strlen(s)/2; i--)
+    if(*pointer != -1)
     {
-        int tmp = s[i];
-        s[i] = s[strlen(s)-i-1];
-        s[strlen(s)-i-1] = tmp;
+        while(*pointer != -1)
+        {
+            push(per, tmp[*pointer], pointer1);
+            tmp[*pointer] = ' ';
+            (*pointer) --;
+        }
     }
+}
+void show(char *s, int pointer)
+{
+    for(int i = pointer; i>=0; i--)
+        printf("%c", s[i]);
 }
 int main(void)
 {
-    char *s;
-    s = (char*)malloc(100*sizeof(char));
+    char *s = (char*)malloc(100*sizeof(char));
+    char *tmp = (char*)malloc(50*sizeof(char));
+    char *per = (char*)malloc(70*sizeof(char));
+
+    int pointer = -1;
+    int pointer1 = -1;
+    printf("%s", "[+] Enter the expression:--->");
     scanf("%s", s);
-    int l = strlen(s);
 
-    if(s[0] == '/' && s[l-1] == '\\')
+    if(s[0] == '/' && s[strlen(s) - 1] == '\\')
     {
-
-        struct Node *tmp = NULL;
-
-        for(int i = 0; i<l; i++)
+        for(int i = 0; i<strlen(s); i++)
         {
-            if(i!=0 && s[i] == '/')
-                while(tmp != NULL)
-                {
-                    LastNodeDeletion(tmp, &tmp);
-                }
+            char ch = s[i];
+            if(ch == '/')
+                del(tmp, per, &pointer, &pointer1);
+            else if(ch == '\\')
+                pop(tmp, per, &pointer, &pointer1);
+            else
+                push(tmp, ch, &pointer);
         }
+        printf("[+] Output:--->");
+        show(per, pointer1);
     }
-    s = NULL;
-    free(s);
-    return 0;
 }
